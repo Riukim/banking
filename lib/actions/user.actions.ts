@@ -31,8 +31,8 @@ export const signIn = async ({email, password}: signInProps) => {
 
 // atomic transaction, can't create user and not add user to database
 // or can't add user to database and not connect to Plaid
-export const signUp = async (userData: SignUpParams) => {
-  const { email, password, firstName, lastName } = userData
+export const signUp = async ({password, ...userData }: SignUpParams) => {
+  const { email, firstName, lastName } = userData
   
   let newUserAccount
 
@@ -115,7 +115,7 @@ export const createLinkToken = async (user: User) => {
       user: {
         client_user_id: user.$id
       },
-      client_name: user.name,
+      client_name: `${user.firstName} ${user.lastName}`,
       products: ["auth"] as Products[],
       language: "en",
       country_codes: ["US"] as CountryCode[]
