@@ -20,6 +20,16 @@ const config = {
     },
     extend: {
       colors: {
+        primary: "hsl(var(--primary))",
+        background: "hls(var(--background))",
+        header: "hsl(var(--header))",
+        subtext: "hsl(var(--subtext))",
+        foreground: "hsl(var(--foreground))",
+        border: "hsl(var(--border))",
+        card: "hsl(var(--card))",
+        table: "hsl(var(--table))",
+        negative: "hsl(var(--redRow))",
+        positive: "hsl(var(--greenRow))",
         fill: {
           1: "rgba(255, 255, 255, 0.10)",
         },
@@ -58,6 +68,7 @@ const config = {
         black: {
           1: "#00214F",
           2: "#344054",
+          3: "#0c0a09",
         },
         gray: {
           25: "#FCFCFD",
@@ -104,6 +115,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+} satisfies Config
 
 export default config;

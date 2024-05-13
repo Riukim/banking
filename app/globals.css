@@ -43,9 +43,39 @@
   background: #7878a3;
 }
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --primary: 218 24% 27%;
+    --foreground: 221 13% 46%;
+    --header: 220 43% 11%;
+    --subtext: 216 18% 34%;
+    --border: 220 17% 93%;
+    --card: 210 100% 98%;
+    --table: 210, 20%, 98%;
+    --redRow: 12, 100%, 99%;
+    --greenRow: 143, 80%, 98%;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --primary: 0 0% 100%;
+    --foreground: 220 25% 45%;
+    --header: 220 43% 90%;
+    --highlights: 212 99% 50%;
+    --subtext: 36 20% 66%;
+    --border: 212 12% 21%;
+    --card: 20 1% 12%;
+    --table: 210, 8%, 10%;
+    --redRow: 12, 11%, 18%;
+    --greenRow: 182, 35%, 21%;
+  }
+}
+
 @layer utilities {
   .input-class {
-    @apply text-16 placeholder:text-16 rounded-lg border border-gray-300 text-gray-900 placeholder:text-gray-500;
+    @apply text-16 placeholder:text-16 rounded-lg border border-border placeholder:text-gray-500;
+    color: hsl(var(--header));
   }
 
   .sheet-content button {
@@ -61,7 +91,8 @@
   }
 
   .header-2 {
-    @apply text-18 font-semibold text-gray-900;
+    @apply text-18 font-semibold;
+    color: hsl(var(--header));
   }
 
   .text-10 {
@@ -110,7 +141,7 @@
   }
 
   .home-content {
-    @apply no-scrollbar flex w-full flex-1 flex-col gap-8 px-5 sm:px-8 py-7 lg:py-12 xl:max-h-screen xl:overflow-y-scroll;
+    @apply no-scrollbar flex w-full flex-1 flex-col bg-background gap-8 px-5 sm:px-8 py-7 lg:py-12 xl:max-h-screen xl:overflow-y-scroll;
   }
 
   .home-header {
@@ -118,7 +149,7 @@
   }
 
   .total-balance {
-    @apply flex w-full items-center gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;
+    @apply flex w-full items-center gap-4 rounded-xl border border-border p-4 shadow-chart sm:gap-6 sm:p-6;
   }
 
   .total-balance-chart {
@@ -126,11 +157,13 @@
   }
 
   .total-balance-label {
-    @apply text-14 font-medium text-gray-600;
+    @apply text-14 font-medium;
+    color: hsl(var(--subtext));
   }
 
   .total-balance-amount {
-    @apply text-24 lg:text-30 flex-1 font-semibold text-gray-900;
+    @apply text-24 lg:text-30 flex-1 font-semibold;
+    color: hsl(var(--header));
   }
 
   .recent-transactions {
@@ -138,7 +171,7 @@
   }
 
   .view-all-btn {
-    @apply text-14 rounded-lg border border-gray-300 px-4 py-2.5 font-semibold text-gray-700;
+    @apply text-14 rounded-lg border border-border px-4 py-2.5 font-semibold text-primary;
   }
 
   .recent-transactions {
@@ -146,7 +179,8 @@
   }
 
   .recent-transactions-label {
-    @apply text-20 md:text-24 font-semibold text-gray-900;
+    @apply text-20 md:text-24 font-semibold;
+    color: hsl(var(--header));
   }
 
   .recent-transactions-tablist {
@@ -155,7 +189,7 @@
 
   /* Right sidebar */
   .right-sidebar {
-    @apply no-scrollbar hidden h-screen max-h-screen flex-col border-l border-gray-200 xl:flex w-[355px] xl:overflow-y-scroll !important;
+    @apply no-scrollbar hidden h-screen max-h-screen flex-col bg-background border-border border-l xl:flex w-[355px] xl:overflow-y-scroll !important;
   }
 
   .profile-banner {
@@ -175,11 +209,13 @@
   }
 
   .profile-name {
-    @apply text-24 font-semibold text-gray-900;
+    @apply text-24 font-semibold;
+    color: hsl(var(--header));
   }
 
   .profile-email {
-    @apply text-16 font-normal text-gray-600;
+    @apply text-16 font-normal;
+    color: hsl(var(--subtext));
   }
 
   .banks {
@@ -188,12 +224,12 @@
 
   /* My Banks */
   .my-banks {
-    @apply flex h-screen max-h-screen w-full flex-col gap-8 bg-gray-25 p-8 xl:py-12;
+    @apply flex h-screen max-h-screen w-full flex-col gap-8 bg-background p-8 xl:py-12;
   }
 
   /* My Banks */
   .transactions {
-    @apply flex max-h-screen w-full flex-col gap-8 overflow-y-scroll bg-gray-25 p-8 xl:py-12;
+    @apply flex max-h-screen w-full flex-col gap-8 overflow-y-scroll bg-background p-8 xl:py-12;
   }
 
   .transactions-header {
@@ -213,16 +249,17 @@
   }
 
   .header-box-title {
-    @apply text-24 lg:text-30 font-semibold text-gray-900;
+    @apply text-24 lg:text-30 font-semibold text-header;
   }
 
   .header-box-subtext {
-    @apply text-14 lg:text-16 font-normal text-gray-600;
+    @apply text-14 lg:text-16 font-normal;
+    color: hsl(var(--subtext));
   }
 
   /* Bank Card */
   .bank-card {
-    @apply relative flex h-[190px] w-full max-w-[320px] justify-between rounded-[20px] border border-white bg-bank-gradient shadow-creditCard backdrop-blur-[6px];
+    @apply relative flex h-[190px] w-full max-w-[320px] justify-between rounded-[20px] border border-border bg-bank-gradient shadow-creditCard backdrop-blur-[6px];
   }
 
   .bank-card_content {
@@ -235,7 +272,7 @@
 
   /* Bank Info */
   .bank-info {
-    @apply gap-[18px] flex p-4 transition-all border bg-blue-25 border-transparent;
+    @apply gap-[18px] flex p-4 transition-all border bg-card border-transparent;
   }
 
   /* Category Badge */
@@ -269,6 +306,11 @@
     @apply flex !justify-start cursor-pointer gap-3 rounded-lg !bg-transparent flex-row;
   }
 
+  .plaidlink-label {
+    @apply text-[16px] font-semibold;
+    color: hsl(var(--primary));
+  }
+
   /* Auth */
   .auth-asset {
     @apply flex h-screen w-full sticky top-0 items-center justify-end bg-sky-1 max-lg:hidden;
@@ -284,7 +326,7 @@
   }
 
   .form-label {
-    @apply text-14 w-full max-w-[280px] font-medium text-gray-700;
+    @apply text-14 w-full max-w-[280px] font-medium text-primary;
   }
 
   .form-message {
@@ -301,7 +343,7 @@
 
   /* Payment Transfer */
   .payment-transfer {
-    @apply no-scrollbar flex flex-col overflow-y-scroll bg-gray-25 p-8 md:max-h-screen xl:py-12;
+    @apply no-scrollbar flex flex-col overflow-y-scroll bg-background p-8 md:max-h-screen xl:py-12;
   }
 
   .payment-transfer_form-item {
@@ -313,11 +355,11 @@
   }
 
   .payment-transfer_form-details {
-    @apply flex flex-col gap-1 border-t border-gray-200 pb-5 pt-6;
+    @apply flex flex-col gap-1 border-t border-border pb-5 pt-6;
   }
 
   .payment-transfer_btn-box {
-    @apply mt-5 flex w-full max-w-[850px] gap-3 border-gray-200 py-5;
+    @apply mt-5 flex w-full max-w-[850px] gap-3 border-border py-5;
   }
 
   .payment-transfer_btn {
@@ -365,11 +407,15 @@
 
   /* Sidebar */
   .sidebar {
-    @apply sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px];
+    @apply sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between border-border bg-background border-r pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px];
   }
 
   .sidebar-logo {
     @apply 2xl:text-26 font-ibm-plex-serif text-[26px] font-bold text-black-1 max-xl:hidden;
+  }
+
+  .dark .sidebar-logo {
+    color: hsl(var(--highlights));
   }
 
   .sidebar-link {
@@ -377,6 +423,7 @@
   }
 
   .sidebar-label {
-    @apply text-16 font-semibold text-black-2 max-xl:hidden;
+    @apply text-16 font-semibold max-xl:hidden;
+    color: hsl(var(--primary));
   }
 }

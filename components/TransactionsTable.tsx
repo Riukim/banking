@@ -31,7 +31,7 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
 const TransactionsTable = ({transactions}: TransactionTableProps) => {
   return (
     <Table>
-      <TableHeader className="bg-[#f9fafb]">
+      <TableHeader className="bg-table">
         <TableRow>
           <TableHead className="px-2">Transaction</TableHead>          
           <TableHead className="px-2">Amount</TableHead>          
@@ -54,12 +54,12 @@ const TransactionsTable = ({transactions}: TransactionTableProps) => {
             <TableRow
               key={t.id}
               className={`${
-                isDebit || amount[0] === "-" ? "bg-[#FFFBFA]" : "bg-[#F6FEF9]"
+                isDebit || amount[0] === "-" ? "bg-negative" : "bg-positive"
               } !over:bg-none !border-b-DEFAULT`}
             >
               <TableCell className="max-w-[250px] pl-2 pr-10">
                 <div className="flex items-center gap-3">
-                  <h1 className="text-14 truncate font-semibold text-[#344054]">
+                  <h1 className="text-14 truncate font-semibold text-primary">
                     {removeSpecialCharacters(t.name)}
                   </h1>
                 </div>
