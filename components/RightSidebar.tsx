@@ -40,7 +40,7 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
               height={20}
               alt="plus"
             />
-            <h2 className="text-14 font-semibold text-subtext">Add Bank</h2>
+            <h2 className="text-14 font-semibold text-foreground">Add Bank</h2>
           </Link>
         </div>
         {banks?.length > 0 && (
@@ -65,11 +65,9 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
             )}
           </div>
         )}
-        <div className='mt-10 flex flex-1 flex-col gap-6'>
-          <h2 className='header-2'>
-            Top Categories
-          </h2>
-          <div className='space-y-5'>
+        <div className="mt-10 flex flex-1 flex-col gap-6">
+          <h2 className="header-2">Top Categories</h2>
+          <div className="space-y-5">
             {categories.map((category, index) => (
               <Category
                 key={category.name}

@@ -56,18 +56,18 @@ export const BankDropdown = ({
         <p className="line-clamp-1 w-full text-left">{selected.name}</p>
       </SelectTrigger>
       <SelectContent
-        className={`w-full bg-black-3  md:w-[300px] ${otherStyles}`}
+        className={`w-full bg-background border-border md:w-[300px] ${otherStyles}`}
         align="end"
       >
         <SelectGroup>
-          <SelectLabel className="py-2 font-normal text-subtext">
+          <SelectLabel className="py-2 font-normal text-muted-foreground">
             Select a bank to display
           </SelectLabel>
           {accounts.map((account: Account) => (
             <SelectItem
               key={account.id}
               value={account.appwriteItemId}
-              className="cursor-pointer border-t"
+              className="cursor-pointer border-border border-t"
             >
               <div className="flex flex-col ">
                 <p className="text-16 font-medium">{account.name}</p>

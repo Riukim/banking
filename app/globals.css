@@ -46,29 +46,47 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --primary: 218 24% 27%;
-    --foreground: 221 13% 46%;
-    --header: 220 43% 11%;
-    --subtext: 216 18% 34%;
-    --border: 220 17% 93%;
-    --card: 210 100% 98%;
-    --table: 210, 20%, 98%;
-    --redRow: 12, 100%, 99%;
-    --greenRow: 143, 80%, 98%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --primary: 0 0% 100%;
-    --foreground: 220 25% 45%;
-    --header: 220 43% 90%;
-    --highlights: 212 99% 50%;
-    --subtext: 36 20% 66%;
-    --border: 212 12% 21%;
-    --card: 20 1% 12%;
-    --table: 210, 8%, 10%;
-    --redRow: 12, 11%, 18%;
-    --greenRow: 182, 35%, 21%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
   }
 }
 
@@ -157,8 +175,7 @@
   }
 
   .total-balance-label {
-    @apply text-14 font-medium;
-    color: hsl(var(--subtext));
+    @apply text-14 font-medium text-muted-foreground;
   }
 
   .total-balance-amount {
@@ -171,7 +188,7 @@
   }
 
   .view-all-btn {
-    @apply text-14 rounded-lg border border-border px-4 py-2.5 font-semibold text-primary;
+    @apply text-14 rounded-lg border border-border px-4 py-2.5 font-semibold text-primary hover:bg-accent;
   }
 
   .recent-transactions {
@@ -209,13 +226,11 @@
   }
 
   .profile-name {
-    @apply text-24 font-semibold;
-    color: hsl(var(--header));
+    @apply text-24 font-semibold text-foreground;
   }
 
   .profile-email {
-    @apply text-16 font-normal;
-    color: hsl(var(--subtext));
+    @apply text-16 font-normal text-muted-foreground;
   }
 
   .banks {
@@ -253,8 +268,7 @@
   }
 
   .header-box-subtext {
-    @apply text-14 lg:text-16 font-normal;
-    color: hsl(var(--subtext));
+    @apply text-14 lg:text-16 font-normal text-muted-foreground;
   }
 
   /* Bank Card */
@@ -272,7 +286,7 @@
 
   /* Bank Info */
   .bank-info {
-    @apply gap-[18px] flex p-4 transition-all border bg-card border-transparent;
+    @apply gap-[18px] flex p-4 transition-all border bg-blue-25 dark:bg-background border-transparent;
   }
 
   /* Category Badge */
@@ -290,7 +304,7 @@
   }
 
   .mobilenav-sheet_close {
-    @apply flex gap-3 items-center p-4 rounded-lg w-full max-w-60;
+    @apply flex gap-3 items-center p-4 rounded-lg w-full hover:bg-blue-25 max-w-60;
   }
 
   /* PlaidLink */
@@ -299,21 +313,21 @@
   }
 
   .plaidlink-ghost {
-    @apply flex cursor-pointer items-center justify-center gap-3 rounded-lg px-3 py-7 hover:bg-white lg:justify-start;
+    @apply flex cursor-pointer items-center justify-center gap-3 rounded-lg px-3 py-7 hover:!bg-blue-25 lg:justify-start;
   }
 
   .plaidlink-default {
-    @apply flex !justify-start cursor-pointer gap-3 rounded-lg !bg-transparent flex-row;
+    @apply flex w-full justify-start max-w-[15rem] h-auto xl:justify-start cursor-pointer gap-3 py-4 md:p-3 2xl:p-4 rounded-lg !bg-transparent hover:!bg-blue-25 max-xl:justify-center max-sm:justify-start flex-row;
   }
 
   .plaidlink-label {
-    @apply text-[16px] font-semibold;
+    @apply text-[16px] font-semibold max-xl:hidden;
     color: hsl(var(--primary));
   }
 
   /* Auth */
   .auth-asset {
-    @apply flex h-screen w-full sticky top-0 items-center justify-end bg-sky-1 max-lg:hidden;
+    @apply flex h-screen w-full sticky top-0 items-center justify-end bg-sky-1 dark:bg-accent max-lg:hidden;
   }
 
   /* Auth Form */
@@ -419,7 +433,7 @@
   }
 
   .sidebar-link {
-    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start;
+    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start hover:bg-blue-25;
   }
 
   .sidebar-label {

@@ -12,6 +12,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Footer from "./Footer"
+import PlaidLink from "./PlaidLink"
+import { ModeToggle } from "./ModeToggle"
 
 const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname()
@@ -30,7 +32,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="border-none bg-white"
+          className="border-none bg-background"
         >
           <Link
             className="flex cursor-pointer items-center gap-1 px-4"
@@ -42,14 +44,14 @@ const MobileNav = ({ user }: MobileNavProps) => {
               width={34}
               height={34}
             />
-            <h1 className="text-26 font-ibm-plex-serif font-bold text-black-1">
+            <h1 className="text-26 font-ibm-plex-serif font-bold text-bankGradient">
               Horizon
             </h1>
           </Link>
 
           <div className="mobilenav-sheet">
             <SheetClose asChild>
-              <nav className="flex h-full flex-col gap-6 pt-16 text-white">
+              <nav className="flex h-full flex-col gap-6 pt-16 text-primary">
                 {sidebarLinks.map((item) => {
                   const isActive =
                     pathname === item.route ||
@@ -77,7 +79,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                         />
 
                         <p
-                          className={cn("text-16 font-semibold text-black-2", {
+                          className={cn("text-16 font-semibold text-primary", {
                             "!text-white": isActive,
                           })}
                         >
@@ -88,11 +90,20 @@ const MobileNav = ({ user }: MobileNavProps) => {
                   )
                 })}
 
-                USER
+                <div className="flex gap-1">
+                  <PlaidLink user={user} />
+                </div>
+
+                <div className="flex items-center gap-1 px-4">
+                  <ModeToggle />
+                </div>
               </nav>
             </SheetClose>
 
-            <Footer user={user} type="mobile" />
+            <Footer
+              user={user}
+              type="mobile"
+            />
           </div>
         </SheetContent>
       </Sheet>

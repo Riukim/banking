@@ -20,16 +20,31 @@ const config = {
     },
     extend: {
       colors: {
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         primary: "hsl(var(--primary))",
-        background: "hls(var(--background))",
+        background: "hsl(var(--background))",
         header: "hsl(var(--header))",
         subtext: "hsl(var(--subtext))",
         foreground: "hsl(var(--foreground))",
+        highlight: "hsl(var(--highlights))",
         border: "hsl(var(--border))",
         card: "hsl(var(--card))",
         table: "hsl(var(--table))",
-        negative: "hsl(var(--redRow))",
-        positive: "hsl(var(--greenRow))",
+        negative: "hsl(var(--test))",
+        positive: "hsl(var(--test))",
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
         fill: {
           1: "rgba(255, 255, 255, 0.10)",
         },
@@ -68,7 +83,7 @@ const config = {
         black: {
           1: "#00214F",
           2: "#344054",
-          3: "#0c0a09",
+          3: "#2f353c",
         },
         gray: {
           25: "#FCFCFD",

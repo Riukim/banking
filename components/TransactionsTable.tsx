@@ -54,7 +54,9 @@ const TransactionsTable = ({transactions}: TransactionTableProps) => {
             <TableRow
               key={t.id}
               className={`${
-                isDebit || amount[0] === "-" ? "bg-negative" : "bg-positive"
+                isDebit || amount[0] === "-"
+                  ? "bg-[#FFFBFA] dark:bg-inherit"
+                  : "bg-[#F6FEF9] dark:bg-inherit"
               } !over:bg-none !border-b-DEFAULT`}
             >
               <TableCell className="max-w-[250px] pl-2 pr-10">

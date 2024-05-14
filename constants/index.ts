@@ -51,10 +51,10 @@ export const ITEMS = [
 
 export const topCategoryStyles = {
   "Food and Drink": {
-    bg: "bg-blue-25",
+    bg: "bg-blue-25 dark:bg-background dark:border-border dark:border",
     circleBg: "bg-blue-100",
     text: {
-      main: "text-blue-900",
+      main: "text-blue-900 dark:text-blue-700",
       count: "text-blue-700",
     },
     progress: {
@@ -64,10 +64,10 @@ export const topCategoryStyles = {
     icon: "/icons/monitor.svg",
   },
   Travel: {
-    bg: "bg-success-25",
+    bg: "bg-success-25 dark:bg-background dark:border-border dark:border",
     circleBg: "bg-success-100",
     text: {
-      main: "text-success-900",
+      main: "text-success-900 dark:text-success-700",
       count: "text-success-700",
     },
     progress: {
@@ -77,10 +77,10 @@ export const topCategoryStyles = {
     icon: "/icons/coins.svg",
   },
   default: {
-    bg: "bg-pink-25",
+    bg: "bg-pink-25 dark:bg-background dark:border-border dark:border",
     circleBg: "bg-pink-100",
     text: {
-      main: "text-pink-900",
+      main: "text-pink-900 dark:text-pink-700",
       count: "text-pink-700",
     },
     progress: {
@@ -89,7 +89,7 @@ export const topCategoryStyles = {
     },
     icon: "/icons/shopping-bag.svg",
   },
-};
+}
 
 export const transactionCategoryStyles = {
   "Food and Drink": {

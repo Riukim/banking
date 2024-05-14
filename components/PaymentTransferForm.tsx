@@ -109,7 +109,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
                   <FormLabel className="text-14 font-medium text-primary">
                     Select Source Bank
                   </FormLabel>
-                  <FormDescription className="text-12 font-normal text-subtext">
+                  <FormDescription className="text-12 font-normal text-muted-foreground">
                     Select the bank account you want to transfer funds from
                   </FormDescription>
                 </div>
@@ -138,7 +138,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
                   <FormLabel className="text-14 font-medium text-primary">
                     Transfer Note (Optional)
                   </FormLabel>
-                  <FormDescription className="text-12 font-normal text-subtext">
+                  <FormDescription className="text-12 font-normal text-muted-foreground">
                     Please provide any additional information or instructions
                     related to the transfer
                   </FormDescription>
@@ -162,7 +162,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
           <h2 className="text-18 font-semibold text-header">
             Bank account details
           </h2>
-          <p className="text-16 font-normal text-subtext">
+          <p className="text-16 font-normal text-muted-foreground">
             Enter the bank account details of the recipient
           </p>
         </div>

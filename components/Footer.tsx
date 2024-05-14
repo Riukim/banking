@@ -25,7 +25,7 @@ const Footer = ({ user, type = "desktop" }: FooterProps) => {
         <h1 className="text-14 truncate font-semibold text-primary">
           {user?.firstName}
         </h1>
-        <p className="tex-14 truncate font-normal text-subtext">
+        <p className="tex-14 truncate font-normal text-muted-foreground">
           {user.email}
         </p>
       </div>

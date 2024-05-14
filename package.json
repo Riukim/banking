@@ -34,6 +34,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.4",
     "react-plaid-link": "^3.5.1",
+    "react-responsive": "^10.0.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.6"

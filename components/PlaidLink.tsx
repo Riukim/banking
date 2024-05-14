@@ -11,10 +11,12 @@ import {
   exchangePublicToken,
 } from "@/lib/actions/user.actions"
 import Image from "next/image"
+import { useMediaQuery } from "react-responsive"
 
 const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
   const router = useRouter()
   const [token, setToken] = useState("")
+  const isMobile = useMediaQuery({ maxWidth: 768 })
 
   useEffect(() => {
     const getLinkToken = async () => {
@@ -53,7 +55,7 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
           disabled={!ready}
           className="plaidlink-primary"
         >
-          Connect Bank
+          Connect bank
         </Button>
       ) : variant === "ghost" ? (
         <Button
@@ -67,20 +69,30 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
             width={24}
             height={24}
           />
-          <p className="hidden text-[16px] font-semibold text-black-2 xl:block">Connect Bank</p>
+          <p className="hidden text-[16px] font-semibold text-black-2 xl:block">
+            Connect bank
+          </p>
         </Button>
       ) : (
         <Button
           onClick={() => open()}
           className="plaidlink-default"
         >
-          <Image
-            src="/icons/connect-bank.svg"
-            alt="connect bank"
-            width={24}
-            height={24}
-          />
-          <p className="plaidlink-label">Connect Bank</p>
+          <div className="relative size-6">
+            <Image
+              src="/icons/connect-bank.svg"
+              alt="connect bank"
+              fill
+            />
+          </div>
+          <p className="text-[16px] font-semibold text-primary max-xl:hidden">
+            Connect bank
+          </p>
+          {isMobile && (
+            <p className="text-[16px] font-semibold text-primary">
+              Connect Bank
+            </p>
+          )}
         </Button>
       )}
     </>
