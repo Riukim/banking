@@ -304,7 +304,7 @@
   }
 
   .mobilenav-sheet_close {
-    @apply flex gap-3 items-center p-4 rounded-lg w-full hover:bg-blue-25 max-w-60;
+    @apply flex gap-3 items-center p-4 rounded-lg w-full hover:bg-blue-25 dark:hover:bg-muted/50 max-w-60;
   }
 
   /* PlaidLink */
@@ -313,11 +313,11 @@
   }
 
   .plaidlink-ghost {
-    @apply flex cursor-pointer items-center justify-center gap-3 rounded-lg px-3 py-7 hover:!bg-blue-25 lg:justify-start;
+    @apply flex cursor-pointer items-center justify-center gap-3 rounded-lg px-3 py-7 hover:!bg-blue-25 dark:hover:bg-muted/50 lg:justify-start;
   }
 
   .plaidlink-default {
-    @apply flex w-full justify-start max-w-[15rem] h-auto xl:justify-start cursor-pointer gap-3 py-4 md:p-3 2xl:p-4 rounded-lg !bg-transparent hover:!bg-blue-25 max-xl:justify-center max-sm:justify-start flex-row;
+    @apply flex w-full justify-start max-w-[15rem] h-auto xl:justify-start cursor-pointer gap-3 py-4 md:p-3 2xl:p-4 rounded-lg !bg-transparent hover:!bg-blue-25 dark:hover:!bg-muted/50 max-xl:justify-start max-sm:justify-start flex-row;
   }
 
   .plaidlink-label {
@@ -392,7 +392,7 @@
 
   /* Footer */
   .footer {
-    @apply flex cursor-pointer items-center justify-between gap-2 py-6;
+    @apply flex cursor-pointer border-t border-border items-center justify-between gap-2 py-6;
   }
 
   .footer_name {
@@ -433,7 +433,7 @@
   }
 
   .sidebar-link {
-    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start hover:bg-blue-25;
+    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start hover:bg-blue-25 dark:hover:bg-muted/50;
   }
 
   .sidebar-label {

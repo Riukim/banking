@@ -58,8 +58,8 @@ const Sidebar = ({ user }: SiderbarProps) => {
         })}
 
         <PlaidLink user={user} />
-        
-        <div className="sidebar-link hover:bg-inherit">
+
+        <div className="flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start hover:!bg-none">
           <ModeToggle />
         </div>
       </nav>

@@ -31,7 +31,7 @@ const CategoryBadge = ({ category }: CategoryBadgeProps) => {
 const TransactionsTable = ({transactions}: TransactionTableProps) => {
   return (
     <Table>
-      <TableHeader className="bg-table">
+      <TableHeader className="dark:bg-muted">
         <TableRow>
           <TableHead className="px-2">Transaction</TableHead>          
           <TableHead className="px-2">Amount</TableHead>          
@@ -57,7 +57,7 @@ const TransactionsTable = ({transactions}: TransactionTableProps) => {
                 isDebit || amount[0] === "-"
                   ? "bg-[#FFFBFA] dark:bg-inherit"
                   : "bg-[#F6FEF9] dark:bg-inherit"
-              } !over:bg-none !border-b-DEFAULT`}
+              } !border-b-border`}
             >
               <TableCell className="max-w-[250px] pl-2 pr-10">
                 <div className="flex items-center gap-3">
