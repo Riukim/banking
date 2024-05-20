@@ -1,4 +1,8 @@
+"use client"
+
+import { HeaderBoxProps } from "@/types"
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 const HeaderBox = ({
   type = "title",
@@ -6,6 +10,8 @@ const HeaderBox = ({
   subtext,
   user,
 }: HeaderBoxProps) => {
+   const { t } = useTranslation()
+
   return (
     <div className="header-box">
       <h1 className="header-box-title">
@@ -16,7 +22,9 @@ const HeaderBox = ({
           </span>
         )}
       </h1>
-      <p className="header-box-subtext">{subtext }</p>
+      <p className="header-box-subtext">
+        {subtext}
+      </p>
     </div>
   )
 }

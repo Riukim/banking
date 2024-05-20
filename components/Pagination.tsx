@@ -5,6 +5,8 @@ import { useRouter, useSearchParams } from "next/navigation"
 
 import { Button } from "@/components/ui/button"
 import { formUrlQuery } from "@/lib/utils"
+import { PaginationProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 export const Pagination = ({ page, totalPages }: PaginationProps) => {
   const router = useRouter()
@@ -22,6 +24,8 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
     router.push(newUrl, { scroll: false })
   }
 
+  const {t} = useTranslation("pagination")
+
   return (
     <div className="flex justify-between gap-3">
       <Button
@@ -38,7 +42,7 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
           height={20}
           className="mr-2"
         />
-        Prev
+        {t("prev")}
       </Button>
       <p className="text-14 flex items-center px-2">
         {page} / {totalPages}
@@ -50,7 +54,7 @@ export const Pagination = ({ page, totalPages }: PaginationProps) => {
         onClick={() => handleNavigation("next")}
         disabled={Number(page) >= totalPages}
       >
-        Next
+        {t("next")}
         <Image
           src="/icons/arrow-left.svg"
           alt="arrow"

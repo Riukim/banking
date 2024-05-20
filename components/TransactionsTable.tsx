@@ -1,44 +1,55 @@
+"use client"
+
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
 import { transactionCategoryStyles } from "@/constants"
-import { cn, formatAmount, formatDateTime, getTransactionStatus, removeSpecialCharacters } from "@/lib/utils"
+import {
+  cn,
+  formatAmount,
+  formatDateTime,
+  getTransactionStatus,
+  removeSpecialCharacters,
+} from "@/lib/utils"
+import { CategoryBadgeProps, Transaction, TransactionTableProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 const CategoryBadge = ({ category }: CategoryBadgeProps) => {
-  const {
-    borderColor,
-    backgroundColor,
-    textColor,
-    chipBackgroundColor
-  } = transactionCategoryStyles[category as keyof typeof transactionCategoryStyles] || transactionCategoryStyles.default
+  const { borderColor, backgroundColor, textColor, chipBackgroundColor } =
+    transactionCategoryStyles[
+      category as keyof typeof transactionCategoryStyles
+    ] || transactionCategoryStyles.default
 
   return (
     <div className={cn("category-badge", borderColor, chipBackgroundColor)}>
       <div className={cn("size-2 rounded-full", backgroundColor)} />
-      <p className={cn("text-[12px] font-medium", textColor)}>
-        {category}
-      </p>
+      <p className={cn("text-[12px] font-medium", textColor)}>{category}</p>
     </div>
   )
-} 
+}
 
-const TransactionsTable = ({transactions}: TransactionTableProps) => {
+const TransactionsTable = ({ transactions }: TransactionTableProps) => {
+  const { t } = useTranslation("transactionTable")
+
   return (
     <Table>
       <TableHeader className="dark:bg-muted">
         <TableRow>
-          <TableHead className="px-2">Transaction</TableHead>          
-          <TableHead className="px-2">Amount</TableHead>          
-          <TableHead className="px-2">Status</TableHead>          
-          <TableHead className="px-2">Date</TableHead>          
-          <TableHead className="px-2 max-md:hidden">Channel</TableHead>          
-          <TableHead className="px-2 max-md:hidden">Category</TableHead>          
+          <TableHead className="px-2">{t("transaction")}</TableHead>
+          <TableHead className="px-2">{t("amount")}</TableHead>
+          <TableHead className="px-2">{t("status")}</TableHead>
+          <TableHead className="px-2">{t("date")}</TableHead>
+          <TableHead className="px-2 max-md:hidden">
+            {t("channel")}
+          </TableHead>
+          <TableHead className="px-2 max-md:hidden">
+            {t("category")}
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

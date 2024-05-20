@@ -1,12 +1,18 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import BankCard from './BankCard'
-import { countTransactionCategories } from '@/lib/utils'
-import {Category} from './Category'
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import React from "react"
+import BankCard from "./BankCard"
+import { countTransactionCategories } from "@/lib/utils"
+import { Category } from "./Category"
+import { CategoryCount, RightSidebarProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
   const categories: CategoryCount[] = countTransactionCategories(transactions)
+
+  const { t } = useTranslation("rightSidebar")
 
   return (
     <aside className="right-sidebar">
@@ -29,7 +35,9 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
 
       <section className="banks">
         <div className="flex w-full justify-between">
-          <h2 className="header-2">My Banks</h2>
+          <h2 className="header-2">
+            {t("title")}
+          </h2>
           <Link
             href="/"
             className="flex gap-2"
@@ -40,7 +48,9 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
               height={20}
               alt="plus"
             />
-            <h2 className="text-14 font-semibold text-foreground">Add Bank</h2>
+            <h2 className="text-14 font-semibold text-foreground">
+              {t("add")}
+            </h2>
           </Link>
         </div>
         {banks?.length > 0 && (
@@ -66,7 +76,9 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
           </div>
         )}
         <div className="mt-10 flex flex-1 flex-col gap-6">
-          <h2 className="header-2">Top Categories</h2>
+          <h2 className="header-2">
+            {t("categories")}
+          </h2>
           <div className="space-y-5">
             {categories.map((category, index) => (
               <Category

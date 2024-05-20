@@ -9,9 +9,12 @@ import React from 'react'
 import Footer from './Footer'
 import PlaidLink from './PlaidLink'
 import { ModeToggle } from './ModeToggle'
+import { SiderbarProps } from '@/types'
+import { useTranslation } from 'react-i18next'
 
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname()
+  const {t} = useTranslation("sidebar")
 
   return (
     <section className="sidebar">
@@ -51,7 +54,7 @@ const Sidebar = ({ user }: SiderbarProps) => {
                 />
               </div>
               <p className={cn("sidebar-label", { "!text-white": isActive })}>
-                {item.label}
+                {t(item.label)}
               </p>
             </Link>
           )

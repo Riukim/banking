@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import React from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -5,6 +7,8 @@ import { BankTabItem } from "./BankTabItem"
 import BankInfo from "./BankInfo"
 import TransactionsTable from "./TransactionsTable"
 import { Pagination } from "./Pagination"
+import { Account, RecentTransactionsProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 const RecentTransactions = ({
   accounts,
@@ -20,15 +24,19 @@ const RecentTransactions = ({
 
   const currentTransaction = transactions.slice(indexOfFirstTransaction, indexOfLastTransaction)
 
+  const { t } = useTranslation("recentTransaction")
+
   return (
     <section className="recent-transaction">
       <header className="flex items-center justify-between">
-        <h2 className="recent-transactions-label">Recent Transactions</h2>
+        <h2 className="recent-transactions-label">
+          {t("title")}
+        </h2>
         <Link
           href={`/transaction-history/?id=${appwriteItemId}`}
           className="view-all-btn"
         >
-          View All
+          {t("viewAll")}
         </Link>
       </header>
       <Tabs
