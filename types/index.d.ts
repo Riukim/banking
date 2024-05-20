@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 
+import { Resource } from "i18next";
+import { ReactNode } from "react";
+
 declare type SearchParamProps = {
   params: { [key: string]: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -327,4 +330,11 @@ declare interface getBankProps {
 
 declare interface getBankByAccountIdProps {
   accountId: string;
+}
+
+declare interface TranslationProviderProps {
+  children: ReactNode
+  locale: string
+  namespaces: string[]
+  resources: Resource
 }
