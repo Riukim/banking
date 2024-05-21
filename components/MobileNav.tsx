@@ -14,9 +14,13 @@ import { usePathname } from "next/navigation"
 import Footer from "./Footer"
 import PlaidLink from "./PlaidLink"
 import { ModeToggle } from "./ModeToggle"
+import { MobileNavProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname()
+
+  const { t } = useTranslation("sidebar")
 
   return (
     <section className="w-full max-w-[264px]">
@@ -83,7 +87,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                             "!text-white": isActive,
                           })}
                         >
-                          {item.label}
+                          {t(item.label)}
                         </p>
                       </Link>
                     </SheetClose>

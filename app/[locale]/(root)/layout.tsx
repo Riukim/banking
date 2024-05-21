@@ -20,9 +20,6 @@ export default async function RootLayout({
 
   if (!loggedIn) redirect("/sign-in")
   
-  console.log("language", locale);
-  
-
   const { resources } = await initTranslations(locale, i18nNamespaces)
 
   return (

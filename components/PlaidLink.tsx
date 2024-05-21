@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useCallback, useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import {
@@ -12,6 +14,8 @@ import {
 } from "@/lib/actions/user.actions"
 import Image from "next/image"
 import { useMediaQuery } from "react-responsive"
+import { PlaidLinkProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
   const router = useRouter()
@@ -47,6 +51,8 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
 
   const { open, ready } = usePlaidLink(config)
 
+  const { t } = useTranslation("sidebar")
+
   return (
     <>
       {variant === "primary" ? (
@@ -70,7 +76,7 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
             height={24}
           />
           <p className="hidden text-[16px] font-semibold text-black-2 xl:block">
-            Connect bank
+            {t("connect")}
           </p>
         </Button>
       ) : (
@@ -86,11 +92,11 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
             />
           </div>
           <p className="text-[16px] font-semibold text-primary max-xl:hidden">
-            Connect bank
+            {t("connect")}
           </p>
           {isMobile && (
             <p className="text-[16px] font-semibold text-primary">
-              Connect Bank
+              {t("connect")}
             </p>
           )}
         </Button>
