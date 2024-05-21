@@ -313,7 +313,7 @@
   }
 
   .plaidlink-ghost {
-    @apply flex cursor-pointer items-center justify-center gap-3 rounded-lg px-3 py-7 hover:!bg-blue-25 dark:hover:bg-muted/50 lg:justify-start;
+    @apply flex cursor-pointer text-primary items-center justify-center gap-3 rounded-lg px-3 py-7 xl:justify-start hover:bg-blue-25 dark:hover:bg-muted/50;
   }
 
   .plaidlink-default {

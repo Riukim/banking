@@ -16,6 +16,7 @@ import PlaidLink from "./PlaidLink"
 import { ModeToggle } from "./ModeToggle"
 import { MobileNavProps } from "@/types"
 import { useTranslation } from "react-i18next"
+import LanguageChanger from "./LanguageChanger"
 
 const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname()
@@ -98,8 +99,9 @@ const MobileNav = ({ user }: MobileNavProps) => {
                   <PlaidLink user={user} />
                 </div>
 
-                <div className="flex items-center gap-1 px-4">
+                <div className="flex items-center gap-10 px-4">
                   <ModeToggle />
+                  <LanguageChanger />
                 </div>
               </nav>
             </SheetClose>

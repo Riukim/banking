@@ -35,7 +35,7 @@ export default async function RootLayout({
           <div className="root-layout">
             <Link href="/">
               <Image
-                src="icons/logo.svg"
+                src="/icons/logo.svg"
                 alt="menu icon"
                 width={30}
                 height={30}

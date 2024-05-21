@@ -11,6 +11,7 @@ import PlaidLink from './PlaidLink'
 import { ModeToggle } from './ModeToggle'
 import { SiderbarProps } from '@/types'
 import { useTranslation } from 'react-i18next'
+import LanguageChanger from './LanguageChanger'
 
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname()
@@ -60,10 +61,14 @@ const Sidebar = ({ user }: SiderbarProps) => {
           )
         })}
 
-        <PlaidLink user={user} />
+        <PlaidLink
+          variant="ghost"
+          user={user}
+        />
 
-        <div className="flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start hover:!bg-none">
+        <div className="flex flex-col xl:flex-row gap-10 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start hover:!bg-none">
           <ModeToggle />
+          <LanguageChanger />
         </div>
       </nav>
 
