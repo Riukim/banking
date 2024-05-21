@@ -25,6 +25,8 @@ import {
 } from "./ui/form"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
+import { PaymentTransferFormProps } from "@/types"
+import { useTranslation } from "react-i18next"
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -93,6 +95,8 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
     setIsLoading(false)
   }
 
+  const { t } = useTranslation("TransferForm")
+
   return (
     <Form {...form}>
       <form
@@ -107,10 +111,10 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
               <div className="payment-transfer_form-item pb-6 pt-5">
                 <div className="payment-transfer_form-content">
                   <FormLabel className="text-14 font-medium text-primary">
-                    Select Source Bank
+                    {t("sourceBank")}
                   </FormLabel>
                   <FormDescription className="text-12 font-normal text-muted-foreground">
-                    Select the bank account you want to transfer funds from
+                    {t("sourceBankDescription")}
                   </FormDescription>
                 </div>
                 <div className="flex w-full flex-col">
@@ -136,17 +140,16 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
               <div className="payment-transfer_form-item pb-6 pt-5">
                 <div className="payment-transfer_form-content">
                   <FormLabel className="text-14 font-medium text-primary">
-                    Transfer Note (Optional)
+                    {t("note")}
                   </FormLabel>
                   <FormDescription className="text-12 font-normal text-muted-foreground">
-                    Please provide any additional information or instructions
-                    related to the transfer
+                    {t("noteDescription")}
                   </FormDescription>
                 </div>
                 <div className="flex w-full flex-col">
                   <FormControl>
                     <Textarea
-                      placeholder="Write a short note here"
+                      placeholder={t("notePlaceholder")}
                       className="input-class"
                       {...field}
                     />
@@ -160,10 +163,10 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
 
         <div className="payment-transfer_form-details">
           <h2 className="text-18 font-semibold text-header">
-            Bank account details
+            {t("bankDetails")}
           </h2>
           <p className="text-16 font-normal text-muted-foreground">
-            Enter the bank account details of the recipient
+            {t("bankDetailsDescription")}
           </p>
         </div>
 
@@ -174,12 +177,12 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             <FormItem className="border-t border-border">
               <div className="payment-transfer_form-item py-5">
                 <FormLabel className="text-14 w-full max-w-[280px] font-medium text-primary">
-                  Recipient&apos;s Email Address
+                  {t("address")}
                 </FormLabel>
                 <div className="flex w-full flex-col">
                   <FormControl>
                     <Input
-                      placeholder="ex: johndoe@gmail.com"
+                      placeholder={t("emailPlaceholder")}
                       className="input-class"
                       {...field}
                     />
@@ -198,12 +201,12 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             <FormItem className="border-t border-border">
               <div className="payment-transfer_form-item pb-5 pt-6">
                 <FormLabel className="text-14 w-full max-w-[280px] font-medium text-primary">
-                  Receiver&apos;s Plaid Sharable Id
+                  {t("plaidId")}
                 </FormLabel>
                 <div className="flex w-full flex-col">
                   <FormControl>
                     <Input
-                      placeholder="Enter the public account number"
+                      placeholder={t("idPlaceholder")}
                       className="input-class"
                       {...field}
                     />
@@ -222,12 +225,12 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             <FormItem className="border-y border-border">
               <div className="payment-transfer_form-item py-5">
                 <FormLabel className="text-14 w-full max-w-[280px] font-medium text-primary">
-                  Amount
+                  {t("amount")}
                 </FormLabel>
                 <div className="flex w-full flex-col">
                   <FormControl>
                     <Input
-                      placeholder="ex: 5.00"
+                      placeholder={t("amountPlaceholder")}
                       className="input-class"
                       {...field}
                     />
@@ -253,7 +256,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
                 &nbsp; Sending...
               </>
             ) : (
-              "Transfer Funds"
+              t("button")
             )}
           </Button>
         </div>

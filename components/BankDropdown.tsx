@@ -13,6 +13,7 @@ import {
   SelectTrigger,
 } from "@/components/ui/select"
 import { formUrlQuery, formatAmount } from "@/lib/utils"
+import { Account, BankDropdownProps } from "@/types"
 
 export const BankDropdown = ({
   accounts = [],
@@ -48,7 +49,7 @@ export const BankDropdown = ({
         className={`flex w-full bg-background gap-3 md:w-[300px] ${otherStyles}`}
       >
         <Image
-          src="icons/credit-card.svg"
+          src="/icons/credit-card.svg"
           width={20}
           height={20}
           alt="account"
