@@ -18,6 +18,7 @@ import { signIn, signUp } from "@/lib/actions/user.actions"
 import PlaidLink from "./PlaidLink"
 import { ModeToggle } from "./ModeToggle"
 import { useTranslation } from "react-i18next"
+import LanguageChanger from "./LanguageChanger"
 
 const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter()
@@ -96,8 +97,9 @@ const AuthForm = ({ type }: { type: string }) => {
               Horizon
             </h1>
           </Link>
-          <div className="ml-auto">
+          <div className="flex flex-row gap-5 ml-auto">
             <ModeToggle />
+            <LanguageChanger />
           </div>
         </div>
 
