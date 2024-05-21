@@ -47,7 +47,7 @@ export default function LanguageChanger() {
       onValueChange={handleChange}
       value={currentLocale}
     >
-      <SelectTrigger className="w-[180px] max-xl:w-[4rem] hover:bg-blue-25 dark:hover:bg-muted/50">
+      <SelectTrigger className="w-[130px] max-xl:w-[4rem] hover:bg-blue-25 dark:hover:bg-muted/50">
         <SelectValue placeholder="Change Language" />
       </SelectTrigger>
       <SelectContent>
@@ -70,7 +70,7 @@ export default function LanguageChanger() {
         </SelectItem>
         <SelectItem value="it">
           <span className="inline-flex max-xl:hidden gap-2">
-            Italian
+            Italiano
             <Image
               src={ita}
               alt="Italian"
@@ -87,7 +87,7 @@ export default function LanguageChanger() {
         </SelectItem>
         <SelectItem value="fr">
           <span className="inline-flex max-xl:hidden gap-2">
-            French
+            Français
             <Image
               src={fra}
               alt="French"
