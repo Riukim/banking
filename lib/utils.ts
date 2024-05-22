@@ -1,4 +1,5 @@
 /* eslint-disable no-prototype-builtins */
+import { AccountTypes, CategoryCount, Transaction } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import qs from "query-string";
 import { twMerge } from "tailwind-merge";
@@ -209,3 +210,13 @@ export const authFormSchema = (type: string) => z.object({
   email: z.string().email(),
   password: z.string().min(8),
 })
+
+export const removeLocaleFromPath = (pathname: string) => {
+  const parts = pathname.split("/")
+
+  if (parts.length > 1 && /^[a-z]{2}$/.test(parts[1])) {
+    return "/" + parts.slice(2).join("/")
+  }
+
+  return pathname
+}

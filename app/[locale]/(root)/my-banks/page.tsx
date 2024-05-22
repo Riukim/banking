@@ -5,7 +5,8 @@ import TranslationsProvider from "@/components/TranslationProvider"
 import { getAccounts } from "@/lib/actions/bank.actions"
 import { getLoggedInUser } from "@/lib/actions/user.actions"
 import { Account, SearchParamProps } from "@/types"
-import React from "react"
+import React, { Suspense } from "react"
+import Loading from "../loading"
 
 const i18nNamespaces = ["MyBanks"]
 
@@ -16,34 +17,36 @@ const MyBanks = async ({ params: { locale } }: SearchParamProps) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces)
 
   return (
-    <TranslationsProvider
-      resources={resources}
-      locale={locale}
-      namespaces={i18nNamespaces}
-    >
-      <section className="flex">
-        <div className="my-banks">
-          <HeaderBox
-            title={t("title")}
-            subtext={t("subtext")}
-          />
+    <Suspense fallback={<Loading/>} >
+      <TranslationsProvider
+        resources={resources}
+        locale={locale}
+        namespaces={i18nNamespaces}
+      >
+        <section className="flex">
+          <div className="my-banks">
+            <HeaderBox
+              title={t("title")}
+              subtext={t("subtext")}
+            />
 
-          <div className="space-y-4">
-            <h2 className="header-2">{t("cards")}</h2>
-            <div className="flex flex-wrap gap-6">
-              {accounts &&
-                accounts.data.map((a: Account) => (
-                  <BankCard
-                    key={accounts.id}
-                    account={a}
-                    userName={loggedIn?.firstName}
-                  />
-                ))}
+            <div className="space-y-4">
+              <h2 className="header-2">{t("cards")}</h2>
+              <div className="flex flex-wrap gap-6">
+                {accounts &&
+                  accounts.data.map((a: Account) => (
+                    <BankCard
+                      key={accounts.id}
+                      account={a}
+                      userName={loggedIn?.firstName}
+                    />
+                  ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </TranslationsProvider>
+        </section>
+      </TranslationsProvider>
+    </Suspense>
   )
 }
 

@@ -7,7 +7,8 @@ import { getAccount, getAccounts } from "@/lib/actions/bank.actions"
 import { getLoggedInUser } from "@/lib/actions/user.actions"
 import { formatAmount } from "@/lib/utils"
 import { SearchParamProps } from "@/types"
-import React from "react"
+import React, { Suspense } from "react"
+import Loading from "../loading"
 
 const i18nNamespaces = ["History", "transactionTable", "pagination"]
 
@@ -40,52 +41,54 @@ const TransactionHistory = async ({
   const { t, resources } = await initTranslations(locale, i18nNamespaces)
 
   return (
-    <TranslationsProvider
-      resources={resources}
-      locale={locale}
-      namespaces={i18nNamespaces}
-    >
-      <section className="transactions">
-        <div className="transactios-header">
-          <HeaderBox
-            title={t("title")}
-            subtext={t("subtext")}
-          />
-        </div>
-        <div className="space-y-6">
-          <div className="transactions-account">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-18 font-bold text-white">
-                {account?.data.name}
-              </h2>
-              <p className="text-14 text-blue-25">
-                {account?.data.officialName}
-              </p>
-              <p className="text-14 font-semibold tracking-[1.1px] text-white">
-                ●●●● ●●●● ●●●● {account?.data.mask}
-              </p>
-            </div>
-            <div className="transactions-account-balance">
-              <p className="text-14">{t("balance")}</p>
-              <p className="text-24 text-center font-bold">
-                {formatAmount(account?.data.currentBalance)}
-              </p>
-            </div>
+    <Suspense fallback={<Loading />}>
+      <TranslationsProvider
+        resources={resources}
+        locale={locale}
+        namespaces={i18nNamespaces}
+      >
+        <section className="transactions">
+          <div className="transactios-header">
+            <HeaderBox
+              title={t("title")}
+              subtext={t("subtext")}
+            />
           </div>
-          <section className="flex w-full flex-col gap-6">
-            <TransactionsTable transactions={currentTransaction} />
-            {totalPages > 1 && (
-              <div className="my-4 w-full">
-                <Pagination
-                  totalPages={totalPages}
-                  page={currentPage}
-                />
+          <div className="space-y-6">
+            <div className="transactions-account">
+              <div className="flex flex-col gap-2">
+                <h2 className="text-18 font-bold text-white">
+                  {account?.data.name}
+                </h2>
+                <p className="text-14 text-blue-25">
+                  {account?.data.officialName}
+                </p>
+                <p className="text-14 font-semibold tracking-[1.1px] text-white">
+                  ●●●● ●●●● ●●●● {account?.data.mask}
+                </p>
               </div>
-            )}
-          </section>
-        </div>
-      </section>
-    </TranslationsProvider>
+              <div className="transactions-account-balance">
+                <p className="text-14">{t("balance")}</p>
+                <p className="text-24 text-center font-bold">
+                  {formatAmount(account?.data.currentBalance)}
+                </p>
+              </div>
+            </div>
+            <section className="flex w-full flex-col gap-6">
+              <TransactionsTable transactions={currentTransaction} />
+              {totalPages > 1 && (
+                <div className="my-4 w-full">
+                  <Pagination
+                    totalPages={totalPages}
+                    page={currentPage}
+                  />
+                </div>
+              )}
+            </section>
+          </div>
+        </section>
+      </TranslationsProvider>
+    </Suspense>
   )
 }
 

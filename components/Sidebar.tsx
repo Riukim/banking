@@ -1,7 +1,7 @@
 "use client"
 
 import { sidebarLinks } from '@/constants'
-import { cn } from '@/lib/utils'
+import { cn, removeLocaleFromPath } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -15,6 +15,7 @@ import LanguageChanger from './LanguageChanger'
 
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname()
+  const normalizePathname = removeLocaleFromPath(pathname)
   const {t} = useTranslation("sidebar")
 
   return (
@@ -36,7 +37,8 @@ const Sidebar = ({ user }: SiderbarProps) => {
 
         {sidebarLinks.map((item) => {
           const isActive =
-            pathname === item.route || pathname.startsWith(`${item.route}/`)
+            normalizePathname === item.route ||
+            normalizePathname.startsWith(`${item.route}/`)
 
           return (
             <Link

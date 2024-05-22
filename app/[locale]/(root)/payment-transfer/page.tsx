@@ -5,7 +5,8 @@ import TranslationsProvider from "@/components/TranslationProvider"
 import { getAccounts } from "@/lib/actions/bank.actions"
 import { getLoggedInUser } from "@/lib/actions/user.actions"
 import { SearchParamProps } from "@/types"
-import React from "react"
+import React, { Suspense } from "react"
+import Loading from "../loading"
 
 const i18nNamespaces = ["Transfer", "TransferForm"]
 
@@ -20,21 +21,23 @@ const Transfer = async ({ params: { locale } }: SearchParamProps) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces)
 
   return (
-    <TranslationsProvider
-      resources={resources}
-      locale={locale}
-      namespaces={i18nNamespaces}
-    >
-      <section className="payment-transfer">
-        <HeaderBox
-          title={t("title")}
-          subtext={t("subtext")}
-        />
-        <section className="size-full pt-5">
-          <PaymentTransferForm accounts={accountsData} />
+    <Suspense fallback={<Loading />} >
+      <TranslationsProvider
+        resources={resources}
+        locale={locale}
+        namespaces={i18nNamespaces}
+      >
+        <section className="payment-transfer">
+          <HeaderBox
+            title={t("title")}
+            subtext={t("subtext")}
+          />
+          <section className="size-full pt-5">
+            <PaymentTransferForm accounts={accountsData} />
+          </section>
         </section>
-      </section>
-    </TranslationsProvider>
+      </TranslationsProvider>
+    </Suspense>
   )
 }
 
