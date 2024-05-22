@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { sidebarLinks } from "@/constants"
-import { cn } from "@/lib/utils"
+import { cn, removeLocaleFromPath } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -20,6 +20,7 @@ import LanguageChanger from "./LanguageChanger"
 
 const MobileNav = ({ user }: MobileNavProps) => {
   const pathname = usePathname()
+  const normalizePathname = removeLocaleFromPath(pathname)
 
   const { t } = useTranslation("sidebar")
 
@@ -59,8 +60,8 @@ const MobileNav = ({ user }: MobileNavProps) => {
               <nav className="flex h-full flex-col gap-6 pt-16 text-primary">
                 {sidebarLinks.map((item) => {
                   const isActive =
-                    pathname === item.route ||
-                    pathname.startsWith(`${item.route}/`)
+                    normalizePathname === item.route ||
+                    normalizePathname.startsWith(`${item.route}/`)
                   return (
                     <SheetClose
                       asChild
