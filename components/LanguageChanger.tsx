@@ -52,7 +52,7 @@ export default function LanguageChanger() {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="en">
-          <span className="inline-flex max-xl:hidden gap-2">
+          <span className="text-primary inline-flex max-xl:hidden gap-2">
             English
             <Image
               src={eng}
@@ -69,7 +69,7 @@ export default function LanguageChanger() {
           />
         </SelectItem>
         <SelectItem value="it">
-          <span className="inline-flex max-xl:hidden gap-2">
+          <span className="text-primary inline-flex max-xl:hidden gap-2">
             Italiano
             <Image
               src={ita}
@@ -86,7 +86,7 @@ export default function LanguageChanger() {
           />
         </SelectItem>
         <SelectItem value="fr">
-          <span className="inline-flex max-xl:hidden gap-2">
+          <span className="text-primary inline-flex max-xl:hidden gap-2">
             Français
             <Image
               src={fra}
