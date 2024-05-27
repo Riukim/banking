@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Copy from './Copy'
+import { CreditCardProps } from '@/types'
 
 const BankCard = ({ account, userName, showBalance= true }: CreditCardProps) => {
   return (
